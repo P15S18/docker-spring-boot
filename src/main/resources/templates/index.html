@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <link data-th-href="@{/css/main.css?{id}(id=${timestamp})}" rel="stylesheet">
+    <title>Hello Docker + Spring Boot</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">https://www.linkedin.com/in/pramod-kumar-maurya-33996771/</div></a>
+</nav>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+<img id="drag1" src="img_logo.gif" draggable="true" ondragstart="drag(event)" width="336" height="69">
+<main role="main" class="container">
+    <div class="starter-template">
+        <h1 th:text="${title}">Default title.</h1>
+        <p th:text="${msg}">Default text.</p>
+    </div>
+</main>
+
+<script data-th-src="@{/js/main.js}"></script>
+</body>
+
+</html>
